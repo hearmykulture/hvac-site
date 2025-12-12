@@ -8,6 +8,8 @@ html,
 body {
   background: #000;
   color: #fff;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* iOS polish: prevent text autosizing/zoom jumps and remove tap flash */

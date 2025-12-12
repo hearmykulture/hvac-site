@@ -24,12 +24,17 @@ export default function RadiusMap({
   center = DEFAULT_CENTER,
   radiusKm = DEFAULT_RADIUS_KM,
   title = `Primary service radius (~${DEFAULT_RADIUS_KM} km)`,
-  className = "h-80 w-full rounded-2xl overflow-hidden ring-1 ring-white/10 relative",
+  className = "",
 }: RadiusMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const circleRef = useRef<LeafletCircle | null>(null);
   const markerRef = useRef<LeafletMarker | null>(null);
+
+  // Always apply core layout classes; allow callers to extend height/styles.
+  const wrapperClass =
+    "relative w-full overflow-hidden rounded-2xl ring-1 ring-white/10 " +
+    (className ? className : "h-80");
 
   // Create map once
   useEffect(() => {
@@ -110,7 +115,7 @@ export default function RadiusMap({
   }, [center, radiusKm]);
 
   return (
-    <div className={className}>
+    <div className={wrapperClass}>
       <div ref={containerRef} style={{ height: "100%", width: "100%" }} />
       <div className="pointer-events-none absolute left-2 top-2 rounded bg-black/55 px-2 py-1 text-xs text-white/80">
         {title}

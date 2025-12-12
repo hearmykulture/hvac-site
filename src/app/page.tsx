@@ -103,7 +103,7 @@ const CONTAINER = "mx-auto max-w-7xl px-6 sm:px-8";
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium tracking-wide text-white/90 ring-1 ring-white/15 backdrop-blur">
+    <span className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium tracking-wide text-white/90 ring-1 ring-white/15 backdrop-blur whitespace-normal break-words">
       {children}
     </span>
   );
@@ -111,7 +111,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white text-gray-900 px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-black/10">
+    <span className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-white text-gray-900 px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-black/10 whitespace-normal break-words">
       {children}
     </span>
   );
@@ -370,8 +370,10 @@ export default function Page() {
         <div className={`${CONTAINER} relative pb-20 pt-14 sm:pb-28 sm:pt-18`}>
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm ring-1 ring-white/15">
-                <span className="opacity-85">{TAGLINE}</span>
+              <div className="mb-5 flex w-full max-w-full flex-wrap items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm ring-1 ring-white/15 sm:inline-flex sm:w-auto">
+                <span className="opacity-85 leading-relaxed text-pretty">
+                  {TAGLINE}
+                </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
                 Fast, Reliable <span style={{ color: BRAND.accent }}>HVAC</span>{" "}

@@ -88,7 +88,7 @@ export default function RadiusMap({
       circleRef.current = null;
       markerRef.current = null;
     };
-  }, []); // create once
+  }, [center, radiusKm]); // create once
 
   // Update center / radius on prop change
   useEffect(() => {

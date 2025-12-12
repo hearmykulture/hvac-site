@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
@@ -321,10 +322,13 @@ export default function Page() {
       <header className="sticky top-0 z-40 bg-black/40 ring-1 ring-white/10 backdrop-blur supports-[backdrop-filter]:bg-black/35">
         <div className={`${CONTAINER} flex items-center justify-between py-3`}>
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/logo.png"
               alt={COMPANY_NAME}
+              width={56}
+              height={56}
               className="h-12 w-12 md:h-14 md:w-14 rounded-xl object-contain"
+              priority
             />
             <div className="text-lg md:text-xl font-bold">{COMPANY_NAME}</div>
           </div>
@@ -416,7 +420,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="mt-5 grid grid-cols-3 gap-4">
-                <KeyStat label="Years Serving" value="10+" />
+                <KeyStat label="Years of Experience" value="20+" />
                 <KeyStat label="5-Star Reviews" value="200+" />
                 <KeyStat label="Avg. Response" value="< 2 hrs" />
               </div>
@@ -467,7 +471,7 @@ export default function Page() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-20">
+      <section id="services" className="py-20 scroll-mt-24">
         <div className={CONTAINER}>
           <SectionTitle
             overline="What I do"
@@ -528,7 +532,7 @@ export default function Page() {
       </section>
 
       {/* Areas */}
-      <section id="areas" className="py-20">
+      <section id="areas" className="py-20 scroll-mt-24">
         <div className={CONTAINER}>
           <SectionTitle
             overline="Where I go"
@@ -561,7 +565,7 @@ export default function Page() {
       </section>
 
       {/* Reviews (Elfsight) */}
-      <section id="reviews" className="py-20">
+      <section id="reviews" className="py-20 scroll-mt-24">
         <div className={CONTAINER}>
           <SectionTitle overline="Word of mouth" title="What customers say" />
           <div className="mt-10 rounded-2xl border border-white/10 bg-white/10 p-4">
@@ -572,7 +576,7 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-20">
+      <section id="faq" className="py-20 scroll-mt-24">
         <div className={CONTAINER}>
           <SectionTitle overline="Answers" title="HVAC FAQ" />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -609,7 +613,7 @@ export default function Page() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-20 scroll-mt-24">
         <div className={CONTAINER}>
           <SectionTitle
             overline="Book now"
@@ -781,7 +785,10 @@ export default function Page() {
       </footer>
 
       {/* Sticky mobile call/text bar */}
-      <div className="fixed inset-x-0 bottom-3 px-4 md:hidden">
+      <div
+        className="fixed inset-x-0 bottom-0 px-4 md:hidden"
+        style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)" }}
+      >
         <div className="mx-auto max-w-md rounded-2xl bg-black/60 backdrop-blur ring-1 ring-white/20 shadow-lg">
           <div className="grid grid-cols-2 gap-2 p-2">
             <TextCTA />

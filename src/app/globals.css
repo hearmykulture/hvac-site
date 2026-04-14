@@ -6,10 +6,49 @@
 }
 html,
 body {
-  background: #000;
+  background: #0c0c0c;
   color: #fff;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+@keyframes site-shell-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.site-shell {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 209, 255, 0.74),
+      rgba(0, 71, 255, 0.6) 24%,
+      rgba(255, 255, 255, 0.14) 46%,
+      rgba(255, 90, 31, 0.42) 72%,
+      rgba(0, 209, 255, 0.68)
+    );
+  background-size: 220% 220%;
+  animation: site-shell-shift 22s ease-in-out infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell {
+    animation: none;
+  }
 }
 
 /* iOS polish: prevent text autosizing/zoom jumps and remove tap flash */

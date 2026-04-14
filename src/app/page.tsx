@@ -16,7 +16,7 @@ const BRAND = {
   primaryDark: "#0047FF",
   primary: "#00D1FF",
   accent: "#FF5A1F",
-  bg: "#000000",
+  bg: "#0c0c0c",
 };
 
 /** Business */
@@ -29,6 +29,8 @@ const LICENSE_LINE = "WI HVAC #791-HVACCONT • Insured";
 const PAYMENT_LINE = "Cash, Check, Card, Mobile payments";
 const TAGLINE =
   "Owner-Operated • Emergency line open 24 hours (after-hours visits when available)";
+const SHOWCASE_IMAGE = "/project-showcase.jpg";
+const SHOWCASE_ALT = "Project showcase photo for Hawthorne HVAC and Repair";
 
 const HOURS: Record<string, string> = {
   Mon: "7:00 AM – 5:00 PM",
@@ -97,7 +99,7 @@ const OTHER_SERVICE = SERVICES.find(
 const BRANDS = ["Carrier", "Trane", "Lennox", "Goodman", "Rheem"];
 
 /** Shared container */
-const CONTAINER = "mx-auto max-w-7xl px-6 sm:px-8";
+const CONTAINER = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
 
 /* ----- UI bits (bigger pills / consistent tokens) ----- */
 
@@ -238,13 +240,13 @@ function ServiceCard({
 /* Hours cards — center day label + hours, fix wrapping */
 function HoursTable() {
   return (
-    <div className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3 md:grid-cols-4">
+    <div className="grid min-w-0 grid-cols-2 gap-3 text-sm sm:grid-cols-3 md:grid-cols-4">
       {Object.entries(HOURS).map(([day, hours]) => {
         const isWeekend = day === "Sat" || day === "Sun";
         return (
           <div
             key={day}
-            className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-center"
+            className="flex min-w-0 flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-center"
           >
             <span
               className="text-xs font-semibold uppercase tracking-[0.18em]"
@@ -286,11 +288,13 @@ function ReviewsEmbed({ className = "" }: { className?: string }) {
 export default function Page() {
   return (
     <main
-      className="min-h-screen text-white"
+      className="min-h-screen w-full overflow-x-hidden px-1.5 py-1.5 text-white sm:px-2 sm:py-2"
       style={{ backgroundColor: BRAND.bg }}
     >
+      <div className="site-shell mx-auto w-full rounded-[30px] p-px shadow-[0_20px_60px_rgba(0,0,0,0.24)]">
+        <div className="min-h-[calc(100vh-0.75rem)] overflow-hidden rounded-[29px] bg-[#0c0c0c] sm:min-h-[calc(100vh-1rem)]">
       {/* Top strip */}
-      <div className="w-full bg-black/60 ring-1 ring-white/10">
+      <div className="w-full bg-[#0c0c0c]/60 ring-1 ring-white/10">
         <div
           className={`${CONTAINER} flex items-center justify-between gap-4 py-2.5 text-sm`}
         >
@@ -319,7 +323,7 @@ export default function Page() {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-black/40 ring-1 ring-white/10 backdrop-blur supports-[backdrop-filter]:bg-black/35">
+      <header className="sticky top-0 z-40 bg-[#0c0c0c]/40 ring-1 ring-white/10 backdrop-blur supports-[backdrop-filter]:bg-[#0c0c0c]/35">
         <div className={`${CONTAINER} flex items-center justify-between py-3`}>
           <div className="flex items-center gap-3">
             <Image
@@ -407,18 +411,15 @@ export default function Page() {
 
             <div>
               <div className="relative rounded-3xl border border-white/10 bg-white/10 p-2">
-                <div className="grid aspect-video w-full place-items-center rounded-2xl bg-gradient-to-br from-white/10 to-white/0 px-6 text-center text-white/70">
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.2em]">
-                      Project Showcase
-                    </div>
-                    <div className="mt-2 text-2xl font-bold">
-                      Furnace + AC Replacement
-                    </div>
-                    <div className="mt-2 text-sm">
-                      (Swap with real photos later)
-                    </div>
-                  </div>
+                <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-white/5">
+                  <Image
+                    src={SHOWCASE_IMAGE}
+                    alt={SHOWCASE_ALT}
+                    fill
+                    priority
+                    sizes="(min-width: 768px) 40rem, 100vw"
+                    className="object-cover"
+                  />
                 </div>
               </div>
               <div className="mt-5 grid grid-cols-3 gap-4">
@@ -622,8 +623,8 @@ export default function Page() {
             title="Get a fast quote"
             sub={`Call, text, or send the form—${OWNER_NAME} will reply quickly.`}
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/10 p-6">
+          <div className="mt-10 grid min-w-0 gap-6 md:grid-cols-2">
+            <div className="min-w-0 rounded-2xl border border-white/10 bg-white/10 p-6">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -633,47 +634,47 @@ export default function Page() {
                 }}
                 className="grid gap-4"
               >
-                <label className="grid gap-1 text-sm">
+                <label className="grid min-w-0 gap-1 text-sm">
                   <span className="text-white/85">Name</span>
                   <input
                     required
                     placeholder="Your name"
-                    className="h-11 rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
+                    className="h-11 w-full rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
                   />
                 </label>
-                <label className="grid gap-1 text-sm">
+                <label className="grid min-w-0 gap-1 text-sm">
                   <span className="text-white/85">Phone</span>
                   <input
                     required
                     placeholder={PHONE_DISPLAY}
-                    className="h-11 rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
+                    className="h-11 w-full rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
                   />
                 </label>
-                <label className="grid gap-1 text-sm">
+                <label className="grid min-w-0 gap-1 text-sm">
                   <span className="text-white/85">Service</span>
-                  <select className="h-11 rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10">
+                  <select className="h-11 w-full rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10">
                     {SERVICES.map((s) => (
                       <option key={s.title}>{s.title}</option>
                     ))}
                   </select>
                 </label>
-                <label className="grid gap-1 text-sm">
+                <label className="grid min-w-0 gap-1 text-sm">
                   <span className="text-white/85">Message</span>
                   <textarea
                     rows={5}
                     placeholder="Tell me what's going on"
-                    className="rounded-2xl bg-white px-4 py-3 text-gray-900 ring-1 ring-black/10"
+                    className="w-full rounded-2xl bg-white px-4 py-3 text-gray-900 ring-1 ring-black/10"
                   />
                 </label>
-                <label className="grid gap-1 text-sm">
+                <label className="grid min-w-0 gap-1 text-sm">
                   <span className="text-white/85">Photo (optional)</span>
                   <input
                     type="file"
                     accept="image/*"
-                    className="h-11 rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
+                    className="h-11 w-full rounded-2xl bg-white px-4 text-gray-900 ring-1 ring-black/10"
                   />
                 </label>
-                <div className="mt-1 flex gap-3">
+                <div className="mt-1 flex flex-wrap gap-3">
                   <button className="inline-flex justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-gray-900 ring-1 ring-black/10">
                     Send
                   </button>
@@ -688,7 +689,7 @@ export default function Page() {
               </form>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/10 p-6">
+            <div className="min-w-0 rounded-2xl border border-white/10 bg-white/10 p-6">
               <h3 className="text-xl font-bold">Contact</h3>
               <div className="mt-3 text-white/85">
                 <div>{COMPANY_NAME}</div>
@@ -710,7 +711,7 @@ export default function Page() {
               </div>
               <div className="mt-6">
                 <h4 className="font-semibold">Hours</h4>
-                <div className="mt-3">
+                <div className="mt-3 min-w-0">
                   <HoursTable />
                 </div>
               </div>
@@ -728,15 +729,15 @@ export default function Page() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/30">
-        <div className={`${CONTAINER} grid gap-8 py-12 text-sm md:grid-cols-4`}>
-          <div>
+      <footer className="border-t border-white/10 bg-[#0c0c0c]/30">
+        <div className={`${CONTAINER} grid min-w-0 gap-8 py-12 text-sm md:grid-cols-4`}>
+          <div className="min-w-0">
             <div className="mb-2 font-bold">{COMPANY_NAME}</div>
             <p className="text-white/70">
               Local, owner-operated heating &amp; cooling.
             </p>
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="mb-2 font-semibold">Company</div>
             <ul className="space-y-1 text-white/70">
               <li>
@@ -766,14 +767,14 @@ export default function Page() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="mb-2 font-semibold">Get Help</div>
             <ul className="space-y-1 text-white/70">
               <li>Emergency line: 24/7</li>
               <li>Payments: {PAYMENT_LINE}</li>
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="mb-2 font-semibold">Call or Text</div>
             <div className="flex gap-3">
               <TextCTA />
@@ -785,13 +786,15 @@ export default function Page() {
           © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
         </div>
       </footer>
+        </div>
+      </div>
 
       {/* Sticky mobile call/text bar */}
       <div
         className="fixed inset-x-0 bottom-0 px-4 md:hidden"
         style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)" }}
       >
-        <div className="mx-auto max-w-md rounded-2xl bg-black/60 backdrop-blur ring-1 ring-white/20 shadow-lg">
+        <div className="mx-auto max-w-md rounded-2xl bg-[#0c0c0c]/60 backdrop-blur ring-1 ring-white/20 shadow-lg overflow-hidden">
           <div className="grid grid-cols-2 gap-2 p-2">
             <TextCTA />
             <PhoneCTA />

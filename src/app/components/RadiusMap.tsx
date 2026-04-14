@@ -117,7 +117,7 @@ export default function RadiusMap({
   return (
     <div className={wrapperClass}>
       <div ref={containerRef} style={{ height: "100%", width: "100%" }} />
-      <div className="pointer-events-none absolute left-2 top-2 rounded bg-black/55 px-2 py-1 text-xs text-white/80">
+      <div className="pointer-events-none absolute left-2 top-2 rounded bg-[#0c0c0c]/55 px-2 py-1 text-xs text-white/80">
         {title}
       </div>
     </div>

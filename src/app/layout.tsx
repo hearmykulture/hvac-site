@@ -37,7 +37,7 @@ const PAYMENT_ACCEPTED = "Cash, Check, Credit Card, Mobile Payments";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#000000",
+  themeColor: "#0c0c0c",
 };
 
 const inter = Inter({ subsets: ["latin"] });
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     "heat pump",
   ],
   icons: { icon: "/favicon.ico" },
-  themeColor: "#000000",
+  themeColor: "#0c0c0c",
   openGraph: {
     title: `${DISPLAY_NAME} — Madison, WI`,
     description: `Heating & cooling repair, install, and maintenance. Call or text ${PHONE_DISPLAY}.`,
@@ -135,7 +135,7 @@ export default function RootLayout({
         {/* Click-to-call hint for mobile browsers */}
         <meta name="format-detection" content="telephone=yes" />
       </head>
-      <body className={`${inter.className} bg-black text-white antialiased`}>
+      <body className={`${inter.className} bg-[#0c0c0c] text-white antialiased`}>
         {children}
       </body>
     </html>
